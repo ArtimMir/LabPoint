@@ -65,6 +65,7 @@ namespace FormsApp
                         break;
                     case ".json":
                         var jf = new JsonSerializer();
+                        jf.TypeNameHandling = TypeNameHandling.All;
                         using (var w = new StreamWriter(fs))
                             jf.Serialize(w, points);
                         break;
@@ -102,15 +103,10 @@ namespace FormsApp
                         break;
                     case ".json":
                         var jf = new JsonSerializer();
+                        jf.TypeNameHandling = TypeNameHandling.All;
                         using (var r = new StreamReader(fs))
                             points = (Point[])jf.Deserialize(r, typeof(Point[]));
-                        //string[] json_file = File.ReadAllLines(dlg.FileName);
-                        //string s = string.Join("", json_file);
-
-
-                        //object JsonDe = JsonConvert.DeserializeObject(s);
-                        //listBox.DataSource = JsonDe;
-                        //T = false;
+                        
                         break;
 
                 }
